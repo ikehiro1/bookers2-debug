@@ -1,4 +1,13 @@
-<table class='table'>
+
+<% if @book.errors.any? %>
+  <div id="error_explanation" >
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %><table class='table'>
   <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
   <tr>
 	  <th>name</th>

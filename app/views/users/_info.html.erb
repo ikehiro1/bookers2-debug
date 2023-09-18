@@ -1,26 +1,22 @@
 
-<% if @book.errors.any? %>
-  <div id="error_explanation" >
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %><table class='table'>
+<table class='table'>
   <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
   <tr>
 	  <th>name</th>
-	  <th><%= user.name %></th>
+	  <th><%= user.name %><i class="fas fa-user-secret"></i></th>
   </tr>
   <tr>
 	  <th>introduction</th>
-	  <th><%= user.introduction %></th>
+	  <th><%= user.introduction %><i class="fas fa-theater-masks"></i></th>
   </tr>
 </table>
 　
 <div class='row'>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+  <% if current_user != user %>
+    <td><%= render "relationships/btn", user: user %><i class="fas fa-spinner"></i></td>
+  <% else %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
     <i class="fas fa-user-cog"></i>
+    <% end %>
   <% end %>
 </div>

@@ -2,12 +2,20 @@
 <table class='table'>
   <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
   <tr>
-	  <th>name</th>
-	  <th><%= user.name %><i class="fas fa-user-secret"></i></th>
+	  <th>name<i class="fas fa-user-secret"></th>
+	  <th></i><%= user.name %></th>
   </tr>
   <tr>
-	  <th>introduction</th>
-	  <th><%= user.introduction %><i class="fas fa-theater-masks"></i></th>
+	  <th>introduction<i class="fas fa-question"></i></th>
+	  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+	  <th>follows<i class="fas fa-user-friends"></i></th>
+	  <th><%= link_to user.followings.count, user_followings_path(user.id) %></th>
+  </tr>
+  <tr>
+	  <th>followers<i class="fas fa-theater-masks"></th>
+	  <th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
   </tr>
 </table>
 　
